@@ -4,9 +4,9 @@ type TContent = {
 	mdxSource: MDXRemoteSerializeResult<Record<string, unknown>>
 }
 
-export const Content = ({ mdxSource }: TContent) => {
+export const MDXContent = ({ mdxSource }: TContent) => {
 	return (
-		<div className="content">
+		<div className="MDXContent">
 			<MDXRemote {...mdxSource} />
 		</div>
 	)
