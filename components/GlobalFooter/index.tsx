@@ -1,6 +1,6 @@
-import { NavLink } from '../NavLink'
+import NavLink from '../NavLink'
 
-export const GlobalFooter = () => {
+const GlobalFooter = (): JSX.Element => {
 	return (
 		<footer className="fixed tablet:static box-border left-0 bottom-0 w-full tablet:mt-auto">
 			<div className="p-4 flex justify-center bg-indigo-600 tablet:hidden">
@@ -13,3 +13,5 @@ export const GlobalFooter = () => {
 		</footer>
 	)
 }
+
+export default GlobalFooter

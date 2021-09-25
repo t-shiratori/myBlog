@@ -1,16 +1,23 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
 import Head from 'next/head'
-import { createClient } from 'contentful'
+import { createClient, Entry, EntryCollection } from 'contentful'
 import { serialize } from 'next-mdx-remote/serialize'
-import { mdToPrism } from '../lib/mdToPrism'
-import { Layout } from '../layout'
+import { TField } from '../../types/article'
+import mdToPrism from '../../lib/mdToPrism'
+import Layout from '../../components/layout'
 
 const client = createClient({
 	space: process.env.CONTENTFUL_SPACE_ID as string,
 	accessToken: process.env.CONTENTFUL_ACCESS_TOKEN as string,
 })
 
-const Post = ({ article, mdxSource, highlightHtml }) => {
+type TPostProps = {
+	article: Entry<TField>
+	mdxSource: string
+	highlightHtml: string
+}
+
+const Post = ({ article, mdxSource, highlightHtml }: TPostProps): JSX.Element => {
 	const { fields } = article
 
 	console.log('article:', article)
@@ -35,7 +42,7 @@ const Post = ({ article, mdxSource, highlightHtml }) => {
 export default Post
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const res = await client.getEntries({ content_type: 'article' })
+	const res: EntryCollection<TField> = await client.getEntries({ content_type: 'article' })
 
 	const paths = res.items.map((item) => {
 		return {
@@ -50,7 +57,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-	const { items } = await client.getEntries({ content_type: 'article', 'fields.slug': params.slug })
+	const { items } = await client.getEntries({ content_type: 'article', 'fields.slug': params?.slug })
 
 	if (!items.length) {
 		return {
@@ -61,7 +68,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 		}
 	}
 
-	const article = items[0]
+	const article = items[0] as Entry<TField>
 	const mdxSource = await serialize(article.fields.markDownText)
 	const highlightHtml = await mdToPrism(article.fields.markDownText)
 

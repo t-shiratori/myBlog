@@ -1,10 +1,15 @@
-import { NextPage, GetStaticProps } from 'next'
+import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
-import { createClient } from 'contentful'
-import { Layout } from './layout'
+import { TField } from '../types/article'
+import { createClient, Entry } from 'contentful'
+import Layout from '../components/layout'
 
-const Home: NextPage = ({ articles }) => {
+type THomeProps = {
+	articles: Entry<TField>[]
+}
+
+const Home = ({ articles }: THomeProps): JSX.Element => {
 	console.log('articles:', articles)
 	return (
 		<Layout>

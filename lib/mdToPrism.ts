@@ -4,15 +4,9 @@ import remarkRehype from 'remark-rehype'
 import rehypeFormat from 'rehype-format'
 import rehypePrismPlus from 'rehype-prism-plus'
 import remarkGfm from 'remark-gfm'
-import rehypePrism from 'rehype-prism'
 import rehypeStringify from 'rehype-stringify'
-import rehypeHighlight from 'rehype-highlight'
 
-import { remark } from 'remark'
-import remarkHtml from 'remark-html'
-import remarkPrism from 'remark-prism'
-
-export const mdToPrism = async (markdown) => {
+const mdToPrism = async (markdown: string): Promise<string> => {
 	const result = await unified()
 		.use(remarkParse) // マークダウンのパーサー
 		.use(remarkGfm) // Autolink literals、Strikethrough、Table、Tasklist、に対応するためのremarkのプラグイン。
@@ -24,12 +18,4 @@ export const mdToPrism = async (markdown) => {
 	return String(result)
 }
 
-export const mdToPrism3 = async (markdown) => {
-	const result = await unified()
-		.use(remarkParse)
-		.use(remarkRehype)
-		.use(rehypeFormat)
-		.use(rehypeStringify)
-		.process(markdown)
-	return String(result)
-}
+export default mdToPrism

@@ -1,12 +1,12 @@
 import React from 'react'
-import { GlobalHeader } from './components/GlobalHeader'
-import { GlobalFooter } from './components/GlobalFooter'
+import GlobalHeader from '../components/GlobalHeader'
+import GlobalFooter from '../components/GlobalFooter'
 
 type TLayout = {
 	children: React.ReactElement
 }
 
-export const Layout = ({ children }: TLayout) => {
+const Layout = ({ children }: TLayout): JSX.Element => {
 	return (
 		<div className="tablet:flex tablet:flex-col min-h-[100vh]">
 			<GlobalHeader />
@@ -15,3 +15,5 @@ export const Layout = ({ children }: TLayout) => {
 		</div>
 	)
 }
+
+export default Layout

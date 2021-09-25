@@ -1,6 +1,6 @@
-import { NavLink } from '../NavLink'
+import NavLink from '../NavLink'
 
-export const GlobalHeader = () => {
+const GlobalHeader = (): JSX.Element => {
 	return (
 		<header className="mb-4">
 			<div className="p-4 w-full flex justify-center border-indigo-200 bg-gray-100 tablet:hidden">
@@ -15,3 +15,5 @@ export const GlobalHeader = () => {
 		</header>
 	)
 }
+
+export default GlobalHeader
