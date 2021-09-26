@@ -21,7 +21,7 @@ const Home = ({ articles }: THomeProps): JSX.Element => {
 					{articles.map(({ fields, sys }) => (
 						<li className="text-gray-900 mb-3 pb-3 border-b-[1px]" key={sys.id}>
 							<Link href={`/posts/${fields.slug}`}>
-								<a className="underline">{fields.title}</a>
+								<a className="underline hover:no-underline">{fields.title}</a>
 							</Link>
 						</li>
 					))}
