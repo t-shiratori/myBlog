@@ -7,7 +7,7 @@ const GlobalFooter = (): JSX.Element => {
 				<NavLink href={'/'} name={'Home'} />
 			</div>
 
-			<div className="hidden p-2 tablet:flex justify-center border-t tablet:p-6">
+			<div className="hidden text-gray-900 p-2 tablet:flex justify-center border-t border-gray-500 tablet:p-6">
 				<span className="text-sm">© 2021 Tks Blog All rights reserved.</span>
 			</div>
 		</footer>
