@@ -31,7 +31,7 @@
 	@apply mt-3 text-gray-900;
 }
 
-/* 通常リスト
+/* Bulleted List
 ------------------------------------　*/
 .content ul li {
 	@apply relative pl-3;
@@ -49,7 +49,7 @@
 	border-radius: 50%;
 }
 
-/* ナンバリングリスト
+/* Numbered List
 ------------------------------------　*/
 .content ol {
 	counter-reset: count;
