@@ -1,5 +1,5 @@
 .articleTitle {
-	@apply relative text-xl tablet:text-2xl mb-7 bg-indigo-50 p-4 pb-7 text-gray-900;
+	@apply relative text-xl tablet:text-2xl bg-indigo-50 p-4 pb-7 text-gray-900;
 }
 
 .articleTitle:before {

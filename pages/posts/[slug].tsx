@@ -2,6 +2,7 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import Head from 'next/head'
 import { createClient, Entry, EntryCollection } from 'contentful'
 import { serialize } from 'next-mdx-remote/serialize'
+import { parseISO, format, formatISO9075 } from 'date-fns'
 import { TField } from '../../types/article'
 import mdToPrism from '../../lib/mdToPrism'
 import Layout from '../../components/layout'
@@ -20,11 +21,14 @@ type TPostProps = {
 }
 
 const Post = ({ article, mdxSource, highlightHtml }: TPostProps): JSX.Element => {
-	const { fields } = article
+	const { fields, sys } = article
 
 	console.log('article:', article)
 	console.log('mdxSource:', mdxSource)
 	console.log('highlightHtml:', highlightHtml)
+
+	const createdDate = formatISO9075(new Date(sys.createdAt), 'yyyy-MM-dd')
+	const updatedDate = formatISO9075(new Date(sys.updatedAt), 'yyyy-MM-dd')
 
 	return (
 		<Layout>
@@ -33,7 +37,11 @@ const Post = ({ article, mdxSource, highlightHtml }: TPostProps): JSX.Element =>
 					<title>{fields.title}</title>
 				</Head>
 				<section>
-					<h1 className={titleStyles.articleTitle}>{fields.title}</h1>
+					<h1 className={`${titleStyles.articleTitle} mb-3`}>{fields.title}</h1>
+					<div className="mb-9 flex flex-col items-end text-gray-600 text-sm">
+						<span>Created: {createdDate}</span>
+						<span>Updated: {updatedDate}</span>
+					</div>
 					<div className={contentStyles.content} dangerouslySetInnerHTML={{ __html: highlightHtml }} />
 				</section>
 			</>
