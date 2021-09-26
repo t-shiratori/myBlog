@@ -1,0 +1,126 @@
+/* Heading
+------------------------------------　*/
+.content h1,
+.content h2,
+.content h3 {
+	@apply font-bold my-8;
+}
+
+.content h1 {
+	@apply text-3xl;
+}
+
+.content h2 {
+	@apply text-2xl;
+}
+
+.content h3 {
+	@apply text-xl;
+}
+
+/* 段落
+------------------------------------　*/
+.content p {
+	@apply mt-3;
+}
+
+/* リスト共通
+------------------------------------　*/
+.content ul,
+.content ol {
+	@apply mt-3;
+}
+
+/* 通常リスト
+------------------------------------　*/
+.content ul li {
+	@apply relative pl-3;
+}
+
+.content ul li:before {
+	display: inline-block;
+	position: absolute;
+	top: calc(50% - 0.2rem);
+	left: 0;
+	content: '';
+	width: 0.4rem;
+	height: 0.4rem;
+	background: #000;
+	border-radius: 50%;
+}
+
+/* ナンバリングリスト
+------------------------------------　*/
+.content ol {
+	counter-reset: count;
+}
+
+.content ol li {
+	counter-increment: count;
+}
+
+.content ol li:before {
+	content: counter(count);
+	@apply relative mr-1;
+}
+
+/* 区切り線
+------------------------------------　*/
+.content hr {
+	@apply my-3;
+}
+
+/* 表
+------------------------------------　*/
+.content table {
+	@apply mt-3 border-t border-l;
+}
+
+.content table th {
+	@apply border-b	border-r p-2 text-center;
+}
+
+.content table td {
+	@apply border-b	border-r p-2 text-center;
+}
+
+.content pre {
+	@apply overflow-scroll p-4 border bg-gray-900;
+}
+
+/* code block
+------------------------------------　*/
+/**
+   * Inspired by gatsby remark prism - https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
+   * 1. Make the element just wide enough to fit its content.
+   * 2. Always fill the visible space in .code-highlight.
+   */
+
+.content pre {
+	@apply mt-3;
+}
+
+.content .code-line {
+	display: block;
+	padding-left: 16px;
+	padding-right: 16px;
+	margin-left: -16px;
+	margin-right: -16px;
+	border-left-width: 4px;
+	border-left-color: rgb(31, 41, 55); /* Set code block color */
+}
+
+.content .highlight-line {
+	margin-left: -16px;
+	margin-right: -16px;
+	background-color: rgba(55, 65, 81, 0.5); /* Set highlight bg color */
+	border-left-width: 4px;
+	border-left-color: rgb(59, 130, 246); /* Set highlight accent border color */
+}
+
+.content .line-number::before {
+	padding-right: 16px;
+	margin-left: -8px;
+	color: rgb(156, 163, 175); /* Line number color */
+	content: attr(line);
+}

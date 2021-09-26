@@ -5,6 +5,8 @@ import { serialize } from 'next-mdx-remote/serialize'
 import { TField } from '../../types/article'
 import mdToPrism from '../../lib/mdToPrism'
 import Layout from '../../components/layout'
+import contentStyles from '../../styles/article/content.module.css'
+import titleStyles from '../../styles/article/title.module.css'
 
 const client = createClient({
 	space: process.env.CONTENTFUL_SPACE_ID as string,
@@ -31,8 +33,8 @@ const Post = ({ article, mdxSource, highlightHtml }: TPostProps): JSX.Element =>
 					<title>{fields.title}</title>
 				</Head>
 				<section>
-					<h1 className="mb-4 text-2xl font-bold">{fields.title}</h1>
-					<div className="MDContent" dangerouslySetInnerHTML={{ __html: highlightHtml }} />
+					<h1 className={titleStyles.articleTitle}>{fields.title}</h1>
+					<div className={contentStyles.content} dangerouslySetInnerHTML={{ __html: highlightHtml }} />
 				</section>
 			</>
 		</Layout>
