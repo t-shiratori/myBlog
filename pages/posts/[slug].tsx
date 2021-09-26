@@ -2,7 +2,7 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import Head from 'next/head'
 import { createClient, Entry, EntryCollection } from 'contentful'
 import { serialize } from 'next-mdx-remote/serialize'
-import { parseISO, format, formatISO9075 } from 'date-fns'
+import { formatISO9075 } from 'date-fns'
 import { TField } from '../../types/article'
 import mdToPrism from '../../lib/mdToPrism'
 import Layout from '../../components/layout'
@@ -22,8 +22,8 @@ type TPostProps = {
 
 const Post = ({ article, mdxSource, highlightHtml }: TPostProps): JSX.Element => {
 	const { fields, sys } = article
-	const createdDate = formatISO9075(new Date(sys.createdAt), 'yyyy-MM-dd')
-	const updatedDate = formatISO9075(new Date(sys.updatedAt), 'yyyy-MM-dd')
+	const createdDate = formatISO9075(new Date(sys.createdAt))
+	const updatedDate = formatISO9075(new Date(sys.updatedAt))
 
 	return (
 		<Layout>
