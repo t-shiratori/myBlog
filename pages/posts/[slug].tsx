@@ -6,7 +6,6 @@ import { formatISO9075 } from 'date-fns'
 import { TField } from '../../types/article'
 import mdToPrism from '../../lib/mdToPrism'
 import Layout from '../../components/layout'
-import contentStyles from '../../styles/article/content.module.css'
 import titleStyles from '../../styles/article/title.module.css'
 
 const client = createClient({
@@ -37,7 +36,7 @@ const Post = ({ article, mdxSource, highlightHtml }: TPostProps): JSX.Element =>
 						<span>Created: {createdDate}</span>
 						<span>Updated: {updatedDate}</span>
 					</div>
-					<div className={contentStyles.content} dangerouslySetInnerHTML={{ __html: highlightHtml }} />
+					<div className={'content'} dangerouslySetInnerHTML={{ __html: highlightHtml }} />
 				</section>
 			</>
 		</Layout>

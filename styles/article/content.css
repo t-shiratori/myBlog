@@ -24,6 +24,22 @@
 	@apply mt-3 text-gray-900;
 }
 
+/* テキストリンク
+------------------------------------　*/
+.content a {
+	@apply text-blue-700 hover:text-blue-500;
+}
+
+/* 引用
+------------------------------------　*/
+.content blockquote {
+	@apply mt-4 p-4 bg-gray-200 border-l-4 border-gray-600;
+}
+
+.content blockquote p {
+	@apply text-gray-600 italic my-2;
+}
+
 /* リスト共通
 ------------------------------------　*/
 .content ul,
@@ -118,7 +134,7 @@
 	border-left-color: rgb(59, 130, 246); /* Set highlight accent border color */
 }
 
-.content .line-number::before {
+.content .line-number:before {
 	padding-right: 16px;
 	margin-left: -8px;
 	color: rgb(156, 163, 175); /* Line number color */
