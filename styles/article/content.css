@@ -21,7 +21,7 @@
 /* 段落
 ------------------------------------　*/
 .content p {
-	@apply mt-3 text-gray-900;
+	@apply mt-4 text-gray-900;
 }
 
 /* テキストリンク
@@ -44,7 +44,7 @@
 ------------------------------------　*/
 .content ul,
 .content ol {
-	@apply mt-3 text-gray-900;
+	@apply mt-4 text-gray-900;
 }
 
 /* Bulleted List
@@ -83,13 +83,13 @@
 /* 区切り線
 ------------------------------------　*/
 .content hr {
-	@apply my-3;
+	@apply my-4;
 }
 
 /* 表
 ------------------------------------　*/
 .content table {
-	@apply mt-3 border-t border-l;
+	@apply mt-4 border-t border-l;
 }
 
 .content table th {
@@ -113,7 +113,7 @@
    */
 
 .content pre {
-	@apply mt-3;
+	@apply mt-4;
 }
 
 .content .code-line {
