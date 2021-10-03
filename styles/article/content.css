@@ -140,3 +140,9 @@
 	color: rgb(156, 163, 175); /* Line number color */
 	content: attr(line);
 }
+
+/* iframe
+------------------------------------　*/
+.content iframe {
+	@apply my-4;
+}
