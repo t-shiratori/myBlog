@@ -4,12 +4,14 @@ import Link from 'next/link'
 import { TField } from '../types/article'
 import { createClient, Entry } from 'contentful'
 import Layout from '../components/layout'
+import homeStyles from '../styles/home.module.css'
 
 type THomeProps = {
 	articles: Entry<TField>[]
 }
 
 const Home = ({ articles }: THomeProps): JSX.Element => {
+	console.log('articles:', articles)
 	return (
 		<Layout>
 			<>
@@ -17,11 +19,25 @@ const Home = ({ articles }: THomeProps): JSX.Element => {
 					<title>Blog Articles List</title>
 				</Head>
 				<ul>
-					{articles.map(({ fields, sys }) => (
-						<li className="text-gray-900 mb-3 pb-3 border-b-[1px]" key={sys.id}>
-							<Link href={`/posts/${fields.slug}`}>
-								<a className="underline hover:no-underline">{fields.title}</a>
-							</Link>
+					{articles.map(({ fields, sys, metadata }) => (
+						<li className="text-gray-900 mb-3 pb-3" key={sys.id}>
+							<div className="bg-white">
+								<Link href={`/posts/${fields.slug}`}>
+									<a className="block p-6 border-[3px] border-gray-500 hover:border-gray-300 box-border">
+										<span className="text-xl">{fields.title}</span>
+										<div className="flex mt-4 text-sm">
+											<span>Category:</span>
+											<ul className={`flex ml-1 ${homeStyles.tagList}`}>
+												{metadata.tags.map(({ sys }) => (
+													<li className="text-gray-600" key={sys.id}>
+														{sys.id}
+													</li>
+												))}
+											</ul>
+										</div>
+									</a>
+								</Link>
+							</div>
 						</li>
 					))}
 				</ul>

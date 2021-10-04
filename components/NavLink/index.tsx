@@ -8,7 +8,7 @@ type TNavLink = {
 const NavLink = ({ href, name }: TNavLink): JSX.Element => {
 	return (
 		<Link href={href} passHref>
-			<a className="text-white tablet:text-2xl">{name}</a>
+			<a className="text-white tablet:text-black tablet:text-2xl">{name}</a>
 		</Link>
 	)
 }
