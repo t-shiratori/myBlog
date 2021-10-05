@@ -8,7 +8,7 @@ class MyDocument extends Document {
 
 	render(): JSX.Element {
 		return (
-			<Html className="bg-gray-100">
+			<Html className="bg-gray-200">
 				<Head>
 					<link rel="preconnect" href="https://fonts.googleapis.com" />
 					<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />

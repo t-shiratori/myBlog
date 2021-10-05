@@ -30,14 +30,18 @@ const Post = ({ article, mdxSource, highlightHtml }: TPostProps): JSX.Element =>
 				<Head>
 					<title>{fields.title}</title>
 				</Head>
-				<section className="p-8 rounded-sm bg-white">
-					<h1 className={`${titleStyles.articleTitle} mb-3`}>{fields.title}</h1>
-					<div className="mb-9 flex flex-col items-end text-gray-600 text-sm">
-						<span>Created: {createdDate}</span>
-						<span>Updated: {updatedDate}</span>
+				<article>
+					<header className="p-8 pb-6 rounded-sm bg-white">
+						<h1 className={`${titleStyles.articleTitle} mb-3`}>{fields.title}</h1>
+						<div className="flex flex-col items-end text-gray-600 text-sm">
+							<span>Created: {createdDate}</span>
+							<span>Updated: {updatedDate}</span>
+						</div>
+					</header>
+					<div className="mt-4 tablet:mt-8 py-4 px-8 rounded-sm bg-white">
+						<div className={'content'} dangerouslySetInnerHTML={{ __html: highlightHtml }} />
 					</div>
-					<div className={'content'} dangerouslySetInnerHTML={{ __html: highlightHtml }} />
-				</section>
+				</article>
 			</>
 		</Layout>
 	)

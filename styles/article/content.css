@@ -3,7 +3,13 @@
 .content h1,
 .content h2,
 .content h3 {
-	@apply font-bold my-8 text-gray-900;
+	@apply mt-4 mb-8 font-bold text-gray-900;
+}
+
+.content h1:not(:first-child),
+.content h2:not(:first-child),
+.content h3:not(:first-child) {
+	@apply my-8;
 }
 
 .content h1 {
@@ -21,7 +27,11 @@
 /* 段落
 ------------------------------------　*/
 .content p {
-	@apply mt-4 text-gray-900;
+	@apply text-gray-900;
+}
+
+.content p:not(:first-child) {
+	@apply mt-4;
 }
 
 /* テキストリンク
@@ -44,7 +54,12 @@
 ------------------------------------　*/
 .content ul,
 .content ol {
-	@apply mt-4 text-gray-900;
+	@apply text-gray-900;
+}
+
+.content ul:not(:first-child),
+.content ol:not(:first-child) {
+	@apply mt-4;
 }
 
 /* Bulleted List
@@ -89,7 +104,11 @@
 /* 表
 ------------------------------------　*/
 .content table {
-	@apply mt-4 border-t border-l;
+	@apply border-t border-l;
+}
+
+.content table:not(:first-child) {
+	@apply mt-4;
 }
 
 .content table th {
@@ -112,7 +131,7 @@
    * 2. Always fill the visible space in .code-highlight.
    */
 
-.content pre {
+.content pre:not(:first-child) {
 	@apply mt-4;
 }
 
@@ -143,6 +162,6 @@
 
 /* iframe
 ------------------------------------　*/
-.content iframe {
+.content iframe:not(:first-child) {
 	@apply my-4;
 }
