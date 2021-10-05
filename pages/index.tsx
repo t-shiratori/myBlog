@@ -23,7 +23,7 @@ const Home = ({ articles }: THomeProps): JSX.Element => {
 						<li className="text-gray-900 mb-3 pb-3" key={sys.id}>
 							<div className="bg-white">
 								<Link href={`/posts/${fields.slug}`}>
-									<a className="block p-6 border-[3px] border-gray-500 hover:border-gray-300 box-border">
+									<a className="block rounded-sm p-6 border-[3px] border-gray-500 hover:border-gray-300 box-border">
 										<span className="text-xl">{fields.title}</span>
 										<div className="flex mt-4 text-sm">
 											<span>Category:</span>

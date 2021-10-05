@@ -30,7 +30,7 @@ const Post = ({ article, mdxSource, highlightHtml }: TPostProps): JSX.Element =>
 				<Head>
 					<title>{fields.title}</title>
 				</Head>
-				<section className="p-8 bg-white">
+				<section className="p-8 rounded-sm bg-white">
 					<h1 className={`${titleStyles.articleTitle} mb-3`}>{fields.title}</h1>
 					<div className="mb-9 flex flex-col items-end text-gray-600 text-sm">
 						<span>Created: {createdDate}</span>
