@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { createClient, Entry, TagCollection } from 'contentful'
 import { TField } from '../../types/article'
-import Layout from '../../components/layout'
+import Layout from '../../components/Layout'
 
 const client = createClient({
 	space: process.env.CONTENTFUL_SPACE_ID as string,

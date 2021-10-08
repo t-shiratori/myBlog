@@ -5,7 +5,7 @@ import { serialize } from 'next-mdx-remote/serialize'
 import { formatISO9075 } from 'date-fns'
 import { TField } from '../../types/article'
 import mdToPrism from '../../lib/mdToPrism'
-import Layout from '../../components/layout'
+import Layout from '../../components/Layout'
 import titleStyles from '../../styles/article/title.module.css'
 
 const client = createClient({

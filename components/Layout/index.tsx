@@ -1,6 +1,6 @@
 import React from 'react'
-import GlobalHeader from '../components/GlobalHeader'
-import GlobalFooter from '../components/GlobalFooter'
+import GlobalHeader from '../GlobalHeader'
+import GlobalFooter from '../GlobalFooter'
 
 type TLayout = {
 	children: React.ReactElement

@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { TField } from '../types/article'
 import { createClient, Entry } from 'contentful'
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 import homeStyles from '../styles/home.module.css'
 
 type THomeProps = {

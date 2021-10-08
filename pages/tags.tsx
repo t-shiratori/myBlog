@@ -2,7 +2,7 @@ import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import { createClient, TagCollection } from 'contentful'
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 
 const client = createClient({
 	space: process.env.CONTENTFUL_SPACE_ID as string,
