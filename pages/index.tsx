@@ -11,7 +11,6 @@ type THomeProps = {
 }
 
 const Home = ({ articles }: THomeProps): JSX.Element => {
-	console.log('articles:', articles)
 	return (
 		<Layout>
 			<>
