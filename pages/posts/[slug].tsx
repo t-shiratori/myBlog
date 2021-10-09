@@ -1,5 +1,6 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
 import Head from 'next/head'
+import Link from 'next/link'
 import { createClient, Entry, EntryCollection } from 'contentful'
 import { serialize } from 'next-mdx-remote/serialize'
 import { formatISO9075 } from 'date-fns'
@@ -7,6 +8,7 @@ import { TField } from '../../types/article'
 import mdToPrism from '../../lib/mdToPrism'
 import Layout from '../../components/Layout'
 import titleStyles from '../../styles/article/title.module.css'
+import articleStyles from '../../styles/article.module.css'
 
 const client = createClient({
 	space: process.env.CONTENTFUL_SPACE_ID as string,
@@ -20,7 +22,7 @@ type TPostProps = {
 }
 
 const Post = ({ article, mdxSource, highlightHtml }: TPostProps): JSX.Element => {
-	const { fields, sys } = article
+	const { fields, sys, metadata } = article
 	const createdDate = formatISO9075(new Date(sys.createdAt))
 	const updatedDate = formatISO9075(new Date(sys.updatedAt))
 
@@ -33,6 +35,16 @@ const Post = ({ article, mdxSource, highlightHtml }: TPostProps): JSX.Element =>
 				<article>
 					<header className="p-8 pb-6 rounded-sm bg-white">
 						<h1 className={`${titleStyles.articleTitle} mb-3`}>{fields.title}</h1>
+						<div className="flex mt-4 text-sm">
+							<span>Tags: </span>
+							<ul className={`flex ml-1 ${articleStyles.tagList}`}>
+								{metadata.tags.map(({ sys }) => (
+									<li className="text-gray-600" key={sys.id}>
+										<Link href={`/tags/${sys.id}`}>{sys.id}</Link>
+									</li>
+								))}
+							</ul>
+						</div>
 						<div className="flex flex-col items-end text-gray-600 text-sm">
 							<span>Created: {createdDate}</span>
 							<span>Updated: {updatedDate}</span>

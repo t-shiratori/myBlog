@@ -1,9 +1,9 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
 import Head from 'next/head'
-import Link from 'next/link'
 import { createClient, Entry, TagCollection } from 'contentful'
 import { TField } from '../../types/article'
 import Layout from '../../components/Layout'
+import { Articles } from '../../components/Articles'
 
 const client = createClient({
 	space: process.env.CONTENTFUL_SPACE_ID as string,
@@ -22,15 +22,7 @@ const Tags = ({ articles, tagName }: TTagPostProps): JSX.Element => {
 				<Head>
 					<title>{tagName}</title>
 				</Head>
-				<ul>
-					{articles.map(({ fields, sys }) => (
-						<li className="text-gray-900 mb-3 pb-3 border-b-[1px]" key={sys.id}>
-							<Link href={`/posts/${fields.slug}`}>
-								<a className="underline hover:no-underline">{fields.title}</a>
-							</Link>
-						</li>
-					))}
-				</ul>
+				<Articles articles={articles} />
 			</>
 		</Layout>
 	)
