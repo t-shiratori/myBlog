@@ -2,6 +2,7 @@ import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import { createClient, TagCollection, Tag } from 'contentful'
+import { filterTags } from '../lib/filterTags'
 import Layout from '../components/Layout'
 
 const client = createClient({
@@ -35,17 +36,6 @@ const Tags = ({ tagItems }: TTagsProps): JSX.Element => {
 }
 
 export default Tags
-
-const filterTags = (tags: TagCollection) => {
-	let filteredTags
-	if (process && process.env.NODE_ENV === 'production') {
-		// プロダクションの場合はダミーの記事を除外する
-		filteredTags = tags.items.filter((item) => item.name !== 'DummyArticle')
-	} else {
-		filteredTags = tags.items
-	}
-	return filteredTags
-}
 
 export const getStaticProps: GetStaticProps = async () => {
 	const allTags: TagCollection = await client.getTags()

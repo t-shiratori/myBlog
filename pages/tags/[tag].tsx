@@ -1,6 +1,7 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
 import Head from 'next/head'
 import { createClient, Entry, TagCollection } from 'contentful'
+import { filterTags } from '../../lib/filterTags'
 import { TField } from '../../types/article'
 import Layout from '../../components/Layout'
 import { Articles } from '../../components/Articles'
@@ -34,9 +35,10 @@ const Tags = ({ articles, tagName }: TTagPostProps): JSX.Element => {
 export default Tags
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const tags: TagCollection = await client.getTags()
+	const allTags: TagCollection = await client.getTags()
+	const filteredTags = filterTags(allTags)
 
-	const paths = tags.items.map(({ sys }) => ({
+	const paths = filteredTags.map(({ sys }) => ({
 		params: { tag: sys.id },
 	}))
 
