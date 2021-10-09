@@ -52,6 +52,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+	// params.tag には [tag].tsx の tag の値が入ってくる
 	const { items } = await client.getEntries({ content_type: 'article', 'metadata.tags.sys.id[all]': params?.tag })
 
 	if (!items.length) {
