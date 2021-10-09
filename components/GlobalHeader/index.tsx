@@ -2,7 +2,7 @@ import NavLink from '../NavLink'
 
 const GlobalHeader = (): JSX.Element => {
 	return (
-		<header className="mb-4">
+		<header className="tablet:mb-4">
 			<div className="p-4 w-full flex justify-center bg-white tablet:hidden">
 				<h1 className="text-lg text-black">tks-io</h1>
 			</div>
