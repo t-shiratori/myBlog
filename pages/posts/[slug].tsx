@@ -53,7 +53,7 @@ const Post = ({ article, mdxSource, highlightHtml }: TPostProps): JSX.Element =>
 								))}
 							</ul>
 						</div>
-						<div className="flex flex-col items-end text-gray-600 text-sm">
+						<div className="flex flex-col mt-2 tablet:items-end text-gray-600 text-sm">
 							<span>Created: {createdDate}</span>
 							<span>Updated: {updatedDate}</span>
 						</div>
