@@ -32,6 +32,14 @@ const Post = ({ article, mdxSource, highlightHtml }: TPostProps): JSX.Element =>
 				<Head>
 					<title>{fields.title}</title>
 				</Head>
+
+				<div className="text-sm mb-4 flex">
+					<span className="mr-1">&#062;</span>
+					<Link href={`/`}>
+						<span className="underline hover:no-underline cursor-pointer">Home</span>
+					</Link>
+				</div>
+
 				<article>
 					<header className="p-8 pb-6 rounded-sm bg-white">
 						<h1 className={`${titleStyles.articleTitle} mb-3`}>{fields.title}</h1>
@@ -54,6 +62,12 @@ const Post = ({ article, mdxSource, highlightHtml }: TPostProps): JSX.Element =>
 						<div className={'content'} dangerouslySetInnerHTML={{ __html: highlightHtml }} />
 					</div>
 				</article>
+
+				<div className="text-sm mt-8 hidden tablet:flex justify-center ">
+					<Link href={`/`}>
+						<span className="underline hover:no-underline cursor-pointer">Home</span>
+					</Link>
+				</div>
 			</>
 		</Layout>
 	)
