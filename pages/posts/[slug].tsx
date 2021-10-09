@@ -76,9 +76,15 @@ const Post = ({ article, mdxSource, highlightHtml }: TPostProps): JSX.Element =>
 export default Post
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const res: EntryCollection<TField> = await client.getEntries({ content_type: 'article' })
+	const getArticleParams: { [key: string]: string } = { content_type: 'article' }
+	if (process && process.env.NODE_ENV === 'production') {
+		// プロダクションの場合はダミーの記事を除外する
+		getArticleParams['metadata.tags.sys.id[nin]'] = 'dummyArticle'
+	}
 
-	const paths = res.items.map((item) => {
+	const { items }: EntryCollection<TField> = await client.getEntries(getArticleParams)
+
+	const paths = items.map((item) => {
 		return {
 			params: { slug: item.fields.slug },
 		}

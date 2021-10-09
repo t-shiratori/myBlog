@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
-import { createClient, TagCollection } from 'contentful'
+import { createClient, TagCollection, Tag } from 'contentful'
 import Layout from '../components/Layout'
 
 const client = createClient({
@@ -10,10 +10,10 @@ const client = createClient({
 })
 
 type TTagsProps = {
-	tags: TagCollection
+	tagItems: Tag[]
 }
 
-const Tags = ({ tags }: TTagsProps): JSX.Element => {
+const Tags = ({ tagItems }: TTagsProps): JSX.Element => {
 	return (
 		<Layout>
 			<>
@@ -21,7 +21,7 @@ const Tags = ({ tags }: TTagsProps): JSX.Element => {
 					<title>タグ一覧ページ</title>
 				</Head>
 				<ul>
-					{tags.items.map(({ sys, name }) => (
+					{tagItems.map(({ sys, name }) => (
 						<li className="text-gray-900 mb-3 pb-3 border-b-[1px]" key={sys.id}>
 							<Link href={`/tags/${sys.id}`}>
 								<a className="underline hover:no-underline">{name}</a>
@@ -36,11 +36,22 @@ const Tags = ({ tags }: TTagsProps): JSX.Element => {
 
 export default Tags
 
-export const getStaticProps: GetStaticProps = async () => {
-	//const { items } = await client.getEntries({ 'metadata.tags.sys.id[all]': params.name })
-	const tags: TagCollection = await client.getTags()
+const filterTags = (tags: TagCollection) => {
+	let filteredTags
+	if (process && process.env.NODE_ENV === 'production') {
+		// プロダクションの場合はダミーの記事を除外する
+		filteredTags = tags.items.filter((item) => item.name !== 'DummyArticle')
+	} else {
+		filteredTags = tags.items
+	}
+	return filteredTags
+}
 
-	if (!tags.items.length) {
+export const getStaticProps: GetStaticProps = async () => {
+	const allTags: TagCollection = await client.getTags()
+	const filteredTags = filterTags(allTags)
+
+	if (!filteredTags.length) {
 		return {
 			redirect: {
 				destination: '/',
@@ -51,7 +62,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 	return {
 		props: {
-			tags,
+			tagItems: filteredTags,
 		},
 		revalidate: 1,
 	}

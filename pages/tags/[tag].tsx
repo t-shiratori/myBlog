@@ -48,7 +48,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 	// params.tag には [tag].tsx の tag の値が入ってくる
-	const { items } = await client.getEntries({ content_type: 'article', 'metadata.tags.sys.id[all]': params?.tag })
+
+	const getArticleParams: { [key: string]: string | string[] | undefined } = {
+		content_type: 'article',
+		'metadata.tags.sys.id[all]': params?.tag,
+	}
+
+	if (process && process.env.NODE_ENV === 'production') {
+		// プロダクションの場合はダミーの記事を除外する
+		getArticleParams['metadata.tags.sys.id[nin]'] = 'dummyArticle'
+	}
+
+	const { items } = await client.getEntries(getArticleParams)
 
 	if (!items.length) {
 		return {

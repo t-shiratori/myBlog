@@ -30,11 +30,18 @@ export const getStaticProps: GetStaticProps = async () => {
 		accessToken: process.env.CONTENTFUL_ACCESS_TOKEN as string,
 	})
 
-	const res = await client.getEntries({ content_type: 'article' })
+	const getArticleParams: { [key: string]: string } = { content_type: 'article' }
+
+	if (process && process.env.NODE_ENV === 'production') {
+		// プロダクションの場合はダミーの記事を除外する
+		getArticleParams['metadata.tags.sys.id[nin]'] = 'dummyArticle'
+	}
+
+	const { items } = await client.getEntries(getArticleParams)
 
 	return {
 		props: {
-			articles: res.items,
+			articles: items,
 		},
 		revalidate: 1,
 	}
