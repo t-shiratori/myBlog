@@ -22,6 +22,9 @@ const Tags = ({ articles, tagName }: TTagPostProps): JSX.Element => {
 				<Head>
 					<title>{tagName}</title>
 				</Head>
+				<header className="bg-white p-6 mb-8 rounded-sm">
+					<h1 className="text-xl">「{tagName}」に関する記事一覧</h1>
+				</header>
 				<Articles articles={articles} />
 			</>
 		</Layout>
@@ -59,6 +62,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 	return {
 		props: {
 			articles: items,
+			tagName: params?.tag,
 		},
 		revalidate: 1,
 	}
