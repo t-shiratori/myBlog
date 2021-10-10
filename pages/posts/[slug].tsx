@@ -58,7 +58,7 @@ const Post = ({ article, mdxSource, highlightHtml }: TPostProps): JSX.Element =>
 							<span>Updated: {updatedDate}</span>
 						</div>
 					</header>
-					<div className="mt-4 tablet:mt-8 py-4 px-5 tablet:px-8 rounded-sm bg-white">
+					<div className="mt-4 tablet:mt-8 py-4 px-5 tablet:p-8 rounded-sm bg-white">
 						<div className={'content'} dangerouslySetInnerHTML={{ __html: highlightHtml }} />
 					</div>
 				</article>
