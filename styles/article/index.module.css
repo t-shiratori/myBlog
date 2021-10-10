@@ -8,3 +8,7 @@
 	left: -7px;
 	content: '';
 }
+
+.tags li:not(:last-of-type)::after {
+	content: '、';
+}

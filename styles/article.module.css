@@ -1,3 +1,0 @@
-.tagList li:not(:last-of-type)::after {
-	content: '、';
-}

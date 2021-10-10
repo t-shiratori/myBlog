@@ -9,8 +9,7 @@ import { TField } from '../../types/article'
 import mdToPrism from '../../lib/mdToPrism'
 import Layout from '../../components/Layout'
 import ShareButtons from '../../components/ShareButtons'
-import titleStyles from '../../styles/article/title.module.css'
-import articleStyles from '../../styles/article.module.css'
+import articleStyles from '../../styles/article/index.module.css'
 import { BLOG_URL } from '../../const'
 
 const client = createClient({
@@ -48,11 +47,11 @@ const Post = ({ article, mdxSource, highlightHtml }: TPostProps): JSX.Element =>
 					{/* 記事ヘッダー */}
 					<header className="p-5 rounded-sm bg-white">
 						{/* 記事タイトル */}
-						<h1 className={`${titleStyles.articleTitle} mb-3`}>{fields.title}</h1>
+						<h1 className={`${articleStyles.articleTitle} mb-3`}>{fields.title}</h1>
 						{/* タグリスト */}
 						<div className="flex mt-4 text-sm">
 							<span>Tags: </span>
-							<ul className={`flex ml-1 ${articleStyles.tagList}`}>
+							<ul className={`flex ml-1 ${articleStyles.tags}`}>
 								{metadata.tags.map(({ sys }) => (
 									<li className="text-gray-600" key={sys.id}>
 										<Link href={`/tags/${sys.id}`}>{sys.id}</Link>
