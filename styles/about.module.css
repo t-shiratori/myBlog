@@ -1,0 +1,39 @@
+.about {
+	@apply p-5 bg-white;
+}
+
+.about h1:not(:first-child),
+.about h2:not(:first-child),
+.about h3:not(:first-child) {
+	@apply mt-6;
+}
+
+.about p:not(:first-child) {
+	@apply mt-2;
+}
+
+.about a {
+	@apply text-blue-700 hover:text-blue-500;
+}
+
+.about ul:not(:first-child) {
+	@apply mt-2;
+}
+
+/* Bulleted List
+------------------------------------　*/
+.about ul li {
+	@apply relative pl-3;
+}
+
+.about ul li:before {
+	display: inline-block;
+	position: absolute;
+	top: calc(50% - 0.2rem);
+	left: 0;
+	content: '';
+	width: 0.4rem;
+	height: 0.4rem;
+	background: #000;
+	border-radius: 50%;
+}
