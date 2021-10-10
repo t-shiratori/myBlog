@@ -10,7 +10,7 @@ const GlobalFooter = (): JSX.Element => {
 			</div>
 
 			<div className="hidden text-gray-900 p-2 tablet:flex justify-center border-t border-gray-500 tablet:p-6">
-				<span className="text-sm">© 2021 tks-io All rights reserved.</span>
+				<small className="text-sm">&copy; 2021 tks-io</small>
 			</div>
 		</footer>
 	)
