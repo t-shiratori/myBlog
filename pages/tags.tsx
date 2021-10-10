@@ -2,7 +2,7 @@ import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import { createClient, TagCollection, Tag } from 'contentful'
-import { filterTags } from '../lib/filterTags'
+import { filterTagsForEnv, getHaveArticleTags } from '../lib/filterTags'
 import Layout from '../components/Layout'
 
 const client = createClient({
@@ -39,9 +39,11 @@ export default Tags
 
 export const getStaticProps: GetStaticProps = async () => {
 	const allTags: TagCollection = await client.getTags()
-	const filteredTags = filterTags(allTags)
+	const filteredForEnvTags = filterTagsForEnv(allTags)
+	const haveArticleTags = await getHaveArticleTags(client, filteredForEnvTags)
+	const finalFiltered = filteredForEnvTags.filter(({ sys }) => haveArticleTags.find(({ tagId }) => sys.id === tagId))
 
-	if (!filteredTags.length) {
+	if (!finalFiltered.length) {
 		return {
 			redirect: {
 				destination: '/',
@@ -52,7 +54,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 	return {
 		props: {
-			tagItems: filteredTags,
+			tagItems: finalFiltered,
 		},
 		revalidate: 1,
 	}

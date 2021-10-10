@@ -1,7 +1,7 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
 import Head from 'next/head'
 import { createClient, Entry, TagCollection } from 'contentful'
-import { filterTags } from '../../lib/filterTags'
+import { filterTagsForEnv, getHaveArticleTags } from '../../lib/filterTags'
 import { TField } from '../../types/article'
 import Layout from '../../components/Layout'
 import { Articles } from '../../components/Articles'
@@ -36,10 +36,11 @@ export default Tags
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	const allTags: TagCollection = await client.getTags()
-	const filteredTags = filterTags(allTags)
+	const filteredForEnvTags = filterTagsForEnv(allTags)
+	const haveArticleTags = await getHaveArticleTags(client, filteredForEnvTags)
 
-	const paths = filteredTags.map(({ sys }) => ({
-		params: { tag: sys.id },
+	const paths = haveArticleTags.map(({ tagId }) => ({
+		params: { tag: tagId },
 	}))
 
 	return {
