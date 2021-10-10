@@ -14,10 +14,10 @@ export const Articles = ({ articles }: TArticlesProps): JSX.Element => {
 				const createdDate = formatISO9075(new Date(sys.createdAt), { representation: 'date' })
 
 				return (
-					<li className="text-gray-900 mb-3 pb-3" key={sys.id}>
+					<li className="text-gray-900 mb-3" key={sys.id}>
 						<div className="bg-white">
 							<Link href={`/posts/${fields.slug}`}>
-								<a className="block rounded-sm p-6 border-[3px] border-gray-500 hover:border-gray-300 box-border">
+								<a className="block rounded-sm p-4 border-[3px] border-gray-500 hover:border-gray-300 box-border">
 									<span className="text-xl">{fields.title}</span>
 									<div className="mt-4 flex flex-col items-end text-gray-600 text-sm">
 										<span>{createdDate}</span>

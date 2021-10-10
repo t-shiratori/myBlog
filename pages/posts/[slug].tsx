@@ -1,4 +1,5 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
+import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
 import { createClient, Entry, EntryCollection } from 'contentful'
@@ -7,8 +8,10 @@ import { formatISO9075 } from 'date-fns'
 import { TField } from '../../types/article'
 import mdToPrism from '../../lib/mdToPrism'
 import Layout from '../../components/Layout'
+import ShareButtons from '../../components/ShareButtons'
 import titleStyles from '../../styles/article/title.module.css'
 import articleStyles from '../../styles/article.module.css'
+import { BLOG_URL } from '../../const'
 
 const client = createClient({
 	space: process.env.CONTENTFUL_SPACE_ID as string,
@@ -25,7 +28,7 @@ const Post = ({ article, mdxSource, highlightHtml }: TPostProps): JSX.Element =>
 	const { fields, sys, metadata } = article
 	const createdDate = formatISO9075(new Date(sys.createdAt))
 	const updatedDate = formatISO9075(new Date(sys.updatedAt))
-
+	const router = useRouter()
 	return (
 		<Layout>
 			<>
@@ -33,6 +36,7 @@ const Post = ({ article, mdxSource, highlightHtml }: TPostProps): JSX.Element =>
 					<title>{fields.title}</title>
 				</Head>
 
+				{/* パンくず */}
 				<div className="text-sm mb-4 flex">
 					<span className="mr-1">&#062;</span>
 					<Link href={`/`}>
@@ -41,8 +45,11 @@ const Post = ({ article, mdxSource, highlightHtml }: TPostProps): JSX.Element =>
 				</div>
 
 				<article>
-					<header className="p-5 pb-6 rounded-sm bg-white">
+					{/* 記事ヘッダー */}
+					<header className="p-5 rounded-sm bg-white">
+						{/* 記事タイトル */}
 						<h1 className={`${titleStyles.articleTitle} mb-3`}>{fields.title}</h1>
+						{/* タグリスト */}
 						<div className="flex mt-4 text-sm">
 							<span>Tags: </span>
 							<ul className={`flex ml-1 ${articleStyles.tagList}`}>
@@ -53,16 +60,21 @@ const Post = ({ article, mdxSource, highlightHtml }: TPostProps): JSX.Element =>
 								))}
 							</ul>
 						</div>
+						{/* シェアボタン */}
+						<ShareButtons url={`${BLOG_URL}${router.asPath}`} title={fields.title} />
+						{/* 日付 */}
 						<div className="flex flex-col mt-2 tablet:items-end text-gray-600 text-sm">
 							<span>Created: {createdDate}</span>
 							<span>Updated: {updatedDate}</span>
 						</div>
 					</header>
+					{/* 記事内容 */}
 					<div className="mt-4 tablet:mt-8 py-4 px-5 tablet:p-8 rounded-sm bg-white">
 						<div className={'content'} dangerouslySetInnerHTML={{ __html: highlightHtml }} />
 					</div>
 				</article>
 
+				{/* Home Link */}
 				<div className="text-sm mt-8 hidden tablet:flex justify-center ">
 					<Link href={`/`}>
 						<span className="underline hover:no-underline cursor-pointer">Home</span>
