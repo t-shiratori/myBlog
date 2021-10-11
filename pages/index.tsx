@@ -14,7 +14,7 @@ const Home = ({ articles }: THomeProps): JSX.Element => {
 		<Layout>
 			<>
 				<Head>
-					<title>Blog Articles List</title>
+					<title>tks-io blog 記事一覧</title>
 				</Head>
 				<Articles articles={articles} />
 			</>
