@@ -7,7 +7,7 @@ const About = (): JSX.Element => {
 		<Layout>
 			<>
 				<Head>
-					<title>tks-io blog About</title>
+					<title>tks-io blog : About</title>
 				</Head>
 				<div className={AboutStyles.about}>
 					<p>こちらのサイトは以下の技術スタックで作成されてます。</p>

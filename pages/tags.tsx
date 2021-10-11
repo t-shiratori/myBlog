@@ -19,7 +19,7 @@ const Tags = ({ tagItems }: TTagsProps): JSX.Element => {
 		<Layout>
 			<>
 				<Head>
-					<title>tks-io blog タグ一覧ページ</title>
+					<title>tks-io blog : タグ一覧ページ</title>
 				</Head>
 				<ul>
 					{tagItems.map(({ sys, name }) => (

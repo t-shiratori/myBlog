@@ -32,7 +32,7 @@ const Post = ({ article, mdxSource, highlightHtml }: TPostProps): JSX.Element =>
 		<Layout>
 			<>
 				<Head>
-					<title>{fields.title}</title>
+					<title>{`tks-io blog : ${fields.title}`}</title>
 				</Head>
 
 				{/* パンくず */}

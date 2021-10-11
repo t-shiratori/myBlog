@@ -21,7 +21,7 @@ const Tags = ({ articles, tagName }: TTagPostProps): JSX.Element => {
 		<Layout>
 			<>
 				<Head>
-					<title>{`tks-io blog 「${tagName}」に関する記事一覧`}</title>
+					<title>{`tks-io blog : 「${tagName}」に関する記事一覧`}</title>
 				</Head>
 				<header className="bg-white p-6 mb-8 rounded-sm">
 					<h1 className="text-xl">「{tagName}」に関する記事一覧</h1>
