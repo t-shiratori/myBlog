@@ -1,3 +1,7 @@
+.about * {
+	@apply leading-7;
+}
+
 .about {
 	@apply p-5 bg-white;
 }
@@ -5,11 +9,11 @@
 .about h1:not(:first-child),
 .about h2:not(:first-child),
 .about h3:not(:first-child) {
-	@apply mt-6;
+	@apply mt-7;
 }
 
 .about p:not(:first-child) {
-	@apply mt-2;
+	@apply mt-7;
 }
 
 .about a {
@@ -17,7 +21,7 @@
 }
 
 .about ul:not(:first-child) {
-	@apply mt-2;
+	@apply mt-7;
 }
 
 /* Bulleted List
@@ -36,4 +40,10 @@
 	height: 0.4rem;
 	background: #000;
 	border-radius: 50%;
+}
+
+.about h1 + *:not(:first-child),
+.about h2 + *:not(:first-child),
+.about h3 + *:not(:first-child) {
+	@apply mt-4;
 }

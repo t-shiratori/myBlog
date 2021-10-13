@@ -13,7 +13,7 @@
 .content h1:not(:first-child),
 .content h2:not(:first-child),
 .content h3:not(:first-child) {
-	@apply my-8;
+	@apply mt-8;
 }
 
 .content h1 {
@@ -168,4 +168,12 @@
 ------------------------------------　*/
 .content iframe:not(:first-child) {
 	@apply my-7;
+}
+
+/* hの次の要素
+------------------------------------　*/
+.content h1 + *:not(:first-child),
+.content h2 + *:not(:first-child),
+.content h3 + *:not(:first-child) {
+	@apply mt-4;
 }
