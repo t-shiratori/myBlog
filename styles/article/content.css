@@ -1,9 +1,13 @@
+.content * {
+	@apply leading-7;
+}
+
 /* Heading
 ------------------------------------　*/
 .content h1,
 .content h2,
 .content h3 {
-	@apply mt-4 mb-8 font-bold text-gray-900;
+	@apply mt-7 mb-8 font-bold text-gray-900;
 }
 
 .content h1:not(:first-child),
@@ -31,7 +35,7 @@
 }
 
 .content p:not(:first-child) {
-	@apply mt-4;
+	@apply mt-7;
 }
 
 /* テキストリンク
@@ -43,7 +47,7 @@
 /* 引用
 ------------------------------------　*/
 .content blockquote {
-	@apply mt-4 p-4 bg-gray-200 border-l-4 border-gray-600;
+	@apply mt-7 p-4 bg-gray-200 border-l-4 border-gray-600;
 }
 
 .content blockquote p {
@@ -59,7 +63,7 @@
 
 .content ul:not(:first-child),
 .content ol:not(:first-child) {
-	@apply mt-4;
+	@apply mt-7;
 }
 
 /* Bulleted List
@@ -98,7 +102,7 @@
 /* 区切り線
 ------------------------------------　*/
 .content hr {
-	@apply my-4;
+	@apply my-7;
 }
 
 /* 表
@@ -108,7 +112,7 @@
 }
 
 .content table:not(:first-child) {
-	@apply mt-4;
+	@apply mt-7;
 }
 
 .content table th {
@@ -132,7 +136,7 @@
    */
 
 .content pre:not(:first-child) {
-	@apply mt-4;
+	@apply mt-7;
 }
 
 .content .code-line {
@@ -163,5 +167,5 @@
 /* iframe
 ------------------------------------　*/
 .content iframe:not(:first-child) {
-	@apply my-4;
+	@apply my-7;
 }
