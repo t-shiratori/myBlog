@@ -123,10 +123,6 @@
 	@apply border-b	border-r p-2 text-center text-gray-900;
 }
 
-.content pre {
-	@apply overflow-scroll p-4 border bg-gray-900;
-}
-
 /* code block
 ------------------------------------　*/
 /**
@@ -134,6 +130,10 @@
    * 1. Make the element just wide enough to fit its content.
    * 2. Always fill the visible space in .code-highlight.
    */
+
+.content pre {
+	@apply overflow-scroll p-4 border bg-gray-900;
+}
 
 .content pre:not(:first-child) {
 	@apply mt-7;
