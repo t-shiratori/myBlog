@@ -13,7 +13,7 @@ const mdToPrism = async (markdown: string): Promise<string> => {
 		.use(remarkGfm) // Autolink literals、Strikethrough、Table、Tasklist、に対応するためのremarkのプラグイン。
 		.use(remarkRehype, { allowDangerousHtml: true }) // マークダウンをhtmlに変換するremarkのプラグイン
 		.use(rehypePrismPlus) // PrismでHTMLのコードブロックを強調表示するrehypeプラグイン（rehypeRawの前にやらないと、.line-number、.highlight-line、line属性が削られてしまう）
-		.use(rehypeRaw) // 最初からHTMLで書かれていた生のHTML部分をパースするためのプラグイン
+		.use(rehypeRaw) // HTMLで記述されている部分(iframeなど)をパースするためのプラグイン
 		.use(rehypeFormat) // htmlをきれいに整形するrehypeプラグイン
 		.use(rehypeStringify) // htmlをシリアライズするunified用のコンパイラ
 		.process(markdown)
