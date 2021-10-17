@@ -54,6 +54,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 	const getArticleParams: { [key: string]: string | string[] | undefined } = {
 		content_type: 'article',
+		order: '-sys.createdAt',
 		'metadata.tags.sys.id[all]': params?.tag,
 	}
 

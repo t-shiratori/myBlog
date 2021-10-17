@@ -30,7 +30,7 @@ export const getStaticProps: GetStaticProps = async () => {
 		accessToken: process.env.CONTENTFUL_ACCESS_TOKEN as string,
 	})
 
-	const getArticleParams: { [key: string]: string } = { content_type: 'article' }
+	const getArticleParams: { [key: string]: string } = { content_type: 'article', order: '-sys.createdAt' }
 
 	if (process && process.env.NODE_ENV === 'production') {
 		// プロダクションの場合はダミーの記事を除外する

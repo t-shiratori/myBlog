@@ -87,7 +87,7 @@ const Post = ({ article, mdxSource, highlightHtml }: TPostProps): JSX.Element =>
 export default Post
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const getArticleParams: { [key: string]: string } = { content_type: 'article' }
+	const getArticleParams: { [key: string]: string } = { content_type: 'article', order: '-sys.createdAt' }
 	if (process && process.env.NODE_ENV === 'production') {
 		// プロダクションの場合はダミーの記事を除外する
 		getArticleParams['metadata.tags.sys.id[nin]'] = 'dummyArticle'
@@ -109,7 +109,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 	// params.slug には [slug].tsx の tag の値が入ってくる
-	const { items } = await client.getEntries({ content_type: 'article', 'fields.slug': params?.slug })
+	const { items } = await client.getEntries({
+		content_type: 'article',
+		order: '-sys.createdAt',
+		'fields.slug': params?.slug,
+	})
 
 	if (!items.length) {
 		return {
