@@ -125,11 +125,9 @@
 
 /* code block
 ------------------------------------　*/
-/**
-   * Inspired by gatsby remark prism - https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
-   * 1. Make the element just wide enough to fit its content.
-   * 2. Always fill the visible space in .code-highlight.
-   */
+/*
+ * 参考: [rehype-prism-plus - unified](https://unifiedjs.com/explore/package/rehype-prism-plus/)
+*/
 
 .content pre {
 	@apply overflow-scroll p-4 border bg-gray-900;
