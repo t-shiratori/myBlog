@@ -87,13 +87,13 @@ const Post = ({ article, mdxSource, highlightHtml }: TPostProps): JSX.Element =>
 export default Post
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const getArticleParams: { [key: string]: string } = { content_type: 'article', order: '-sys.createdAt' }
+	const articleQueryParams: { [key: string]: string } = { content_type: 'article', order: '-sys.createdAt' }
 	if (process && process.env.NODE_ENV === 'production') {
 		// プロダクションの場合はダミーの記事を除外する
-		getArticleParams['metadata.tags.sys.id[nin]'] = 'dummyArticle'
+		articleQueryParams['metadata.tags.sys.id[nin]'] = 'dummyArticle'
 	}
 
-	const { items }: EntryCollection<TField> = await client.getEntries(getArticleParams)
+	const { items }: EntryCollection<TField> = await client.getEntries(articleQueryParams)
 
 	const paths = items.map((item) => {
 		return {

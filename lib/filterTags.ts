@@ -22,11 +22,11 @@ export const getArticleLengthPerTag = async (
 ): Promise<TArticleLengthPerTag[]> => {
 	const result: TArticleLengthPerTag[] = await Promise.all(
 		tags.map(async (tag) => {
-			const getArticleParams: { [key: string]: string | string[] | undefined } = {
+			const articleQueryParams: { [key: string]: string | string[] | undefined } = {
 				content_type: 'article',
 				'metadata.tags.sys.id[all]': tag.sys.id,
 			}
-			const result = await client.getEntries(getArticleParams)
+			const result = await client.getEntries(articleQueryParams)
 			return { tagId: tag.sys.id, length: result.items.length }
 		}),
 	)
