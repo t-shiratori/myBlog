@@ -23,7 +23,7 @@ type TPostProps = {
 	highlightHtml: string
 }
 
-const Post = ({ article, mdxSource, highlightHtml }: TPostProps): JSX.Element => {
+const Post = ({ article, highlightHtml }: TPostProps): JSX.Element => {
 	const { fields, sys, metadata } = article
 	const createdDate = formatISO9075(new Date(sys.createdAt))
 	const updatedDate = formatISO9075(new Date(sys.updatedAt))
