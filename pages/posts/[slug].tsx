@@ -35,7 +35,7 @@ const Post = ({ article, highlightHtml }: TPostProps): JSX.Element => {
 					<title>{`tks-io blog : ${fields.title}`}</title>
 					<meta name="description" content={`tks-io blog : ${fields.title}`} />
 					<meta property="og:title" content={`tks-io blog : ${fields.title}`} />
-					<meta property="og:description" content="デフォルトの説明" />
+					<meta property="og:description" content={`tks-io blog : ${fields.title}`} />
 				</Head>
 
 				{/* パンくず */}
