@@ -32,10 +32,10 @@ const Post = ({ article, highlightHtml }: TPostProps): JSX.Element => {
 		<Layout>
 			<>
 				<Head>
-					<title>{`tks-io blog : ${fields.title}`}</title>
-					<meta name="description" content={`tks-io blog : ${fields.title}`} />
-					<meta property="og:title" content={`tks-io blog : ${fields.title}`} />
-					<meta property="og:description" content={`tks-io blog : ${fields.title}`} />
+					<title>{`${fields.title} | tks-io blog`}</title>
+					<meta name="description" content={`${fields.title} | tks-io blog`} />
+					<meta property="og:title" content={`${fields.title} | tks-io blog`} />
+					<meta property="og:description" content={`${fields.title} | tks-io blog`} />
 				</Head>
 
 				{/* パンくず */}
@@ -91,6 +91,7 @@ export default Post
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	const articleQueryParams: { [key: string]: string } = { content_type: 'article', order: '-sys.createdAt' }
+
 	if (process && process.env.NODE_ENV === 'production') {
 		// プロダクションの場合はダミーの記事を除外する
 		articleQueryParams['metadata.tags.sys.id[nin]'] = 'dummyArticle'
