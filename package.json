@@ -5,6 +5,7 @@
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
+		"postbuild": "next-sitemap",
 		"start": "next start",
 		"eslint:fix": "eslint . --ext .js,.ts,.jsx,.tsx --fix",
 		"prettier:fix": "prettier --write ."
@@ -46,6 +47,7 @@
 		"eslint-plugin-prettier": "^4.0.0",
 		"eslint-plugin-react": "^7.29.3",
 		"eslint-plugin-react-hooks": "^4.3.0",
+		"next-sitemap": "^3.1.11",
 		"prettier": "^2.5.1"
 	}
 }

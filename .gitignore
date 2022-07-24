@@ -26,3 +26,6 @@ yarn-error.log*
 
 # env
 .env*
+
+# sitemap robots.txt
+/siteInfo
