@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
 import { createClient, Entry, EntryCollection } from 'contentful'
-import { serialize } from 'next-mdx-remote/serialize'
 import { formatISO9075 } from 'date-fns'
 import { TField } from '../../types/article'
 import mdToPrism from '../../lib/mdToPrism'
@@ -19,7 +18,6 @@ const client = createClient({
 
 type TPostProps = {
 	article: Entry<TField>
-	mdxSource: string
 	highlightHtml: string
 }
 
@@ -129,13 +127,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 	}
 
 	const article = items[0] as Entry<TField>
-	const mdxSource = await serialize(article.fields.markDownText)
 	const highlightHtml = await mdToPrism(article.fields.markDownText)
 
 	return {
 		props: {
 			article: items[0],
-			mdxSource,
 			highlightHtml,
 		},
 		revalidate: 1,
