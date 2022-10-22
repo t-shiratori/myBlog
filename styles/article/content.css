@@ -6,25 +6,31 @@
 ------------------------------------　*/
 .content h1,
 .content h2,
-.content h3 {
+.content h3,
+.content h4 {
 	@apply mt-7 mb-8 font-bold text-gray-900;
 }
 
 .content h1:not(:first-child),
 .content h2:not(:first-child),
-.content h3:not(:first-child) {
+.content h3:not(:first-child),
+.content h4:not(:first-child) {
 	@apply mt-8;
 }
 
 .content h1 {
-	@apply text-3xl;
+	@apply text-4xl;
 }
 
 .content h2 {
-	@apply text-2xl;
+	@apply text-3xl;
 }
 
 .content h3 {
+	@apply text-2xl;
+}
+
+.content h4 {
 	@apply text-xl;
 }
 
@@ -75,7 +81,7 @@
 .content ul li:before {
 	display: inline-block;
 	position: absolute;
-	top: calc(50% - 0.2rem);
+	top: 0.8rem;
 	left: 0;
 	content: '';
 	width: 0.4rem;
@@ -91,12 +97,16 @@
 }
 
 .content ol li {
+	@apply relative pl-3;
 	counter-increment: count;
 }
 
 .content ol li:before {
 	content: counter(count);
-	@apply relative mr-1;
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 
 /* 区切り線
