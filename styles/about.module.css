@@ -33,7 +33,7 @@
 .about ul li:before {
 	display: inline-block;
 	position: absolute;
-	top: calc(50% - 0.2rem);
+	top: 0.8rem;
 	left: 0;
 	content: '';
 	width: 0.4rem;
