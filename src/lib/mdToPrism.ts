@@ -8,16 +8,16 @@ import remarkGfm from 'remark-gfm'
 import rehypeStringify from 'rehype-stringify'
 
 const mdToPrism = async (markdown: string): Promise<string> => {
-	const result = await unified()
-		.use(remarkParse) // マークダウンのパーサー
-		.use(remarkGfm) // Autolink literals、Strikethrough、Table、Tasklist、に対応するためのremarkのプラグイン。
-		.use(remarkRehype, { allowDangerousHtml: true }) // マークダウンをhtmlに変換するremarkのプラグイン
-		.use(rehypePrismPlus) // PrismでHTMLのコードブロックを強調表示するrehypeプラグイン（rehypeRawの前にやらないと、.line-number、.highlight-line、line属性が削られてしまう）
-		.use(rehypeRaw) // HTMLで記述されている部分(iframeなど)をパースするためのプラグイン
-		.use(rehypeFormat) // htmlをきれいに整形するrehypeプラグイン
-		.use(rehypeStringify) // htmlをシリアライズするunified用のコンパイラ
-		.process(markdown)
-	return String(result)
+  const result = await unified()
+    .use(remarkParse) // マークダウンのパーサー
+    .use(remarkGfm) // Autolink literals、Strikethrough、Table、Tasklist、に対応するためのremarkのプラグイン。
+    .use(remarkRehype, { allowDangerousHtml: true }) // マークダウンをhtmlに変換するremarkのプラグイン
+    .use(rehypePrismPlus) // PrismでHTMLのコードブロックを強調表示するrehypeプラグイン（rehypeRawの前にやらないと、.line-number、.highlight-line、line属性が削られてしまう）
+    .use(rehypeRaw) // HTMLで記述されている部分(iframeなど)をパースするためのプラグイン
+    .use(rehypeFormat) // htmlをきれいに整形するrehypeプラグイン
+    .use(rehypeStringify) // htmlをシリアライズするunified用のコンパイラ
+    .process(markdown)
+  return String(result)
 }
 
 export default mdToPrism

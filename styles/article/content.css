@@ -1,5 +1,5 @@
 .content * {
-	@apply leading-7;
+  @apply leading-7;
 }
 
 /* Heading
@@ -8,129 +8,129 @@
 .content h2,
 .content h3,
 .content h4 {
-	@apply mt-7 mb-8 font-bold text-gray-900;
+  @apply mt-7 mb-8 font-bold text-gray-900;
 }
 
 .content h1:not(:first-child),
 .content h2:not(:first-child),
 .content h3:not(:first-child),
 .content h4:not(:first-child) {
-	@apply mt-8;
+  @apply mt-8;
 }
 
 .content h1 {
-	@apply text-4xl;
+  @apply text-4xl;
 }
 
 .content h2 {
-	@apply text-3xl;
+  @apply text-3xl;
 }
 
 .content h3 {
-	@apply text-2xl;
+  @apply text-2xl;
 }
 
 .content h4 {
-	@apply text-xl;
+  @apply text-xl;
 }
 
 /* 段落
 ------------------------------------　*/
 .content p {
-	@apply text-gray-900;
+  @apply text-gray-900;
 }
 
 .content p:not(:first-child) {
-	@apply mt-7;
+  @apply mt-7;
 }
 
 /* テキストリンク
 ------------------------------------　*/
 .content a {
-	@apply text-blue-700 hover:text-blue-500;
+  @apply text-blue-700 hover:text-blue-500;
 }
 
 /* 引用
 ------------------------------------　*/
 .content blockquote {
-	@apply mt-7 p-4 bg-gray-200 border-l-4 border-gray-600;
+  @apply mt-7 p-4 bg-gray-200 border-l-4 border-gray-600;
 }
 
 .content blockquote p {
-	@apply text-gray-600 italic my-2;
+  @apply text-gray-600 italic my-2;
 }
 
 /* リスト共通
 ------------------------------------　*/
 .content ul,
 .content ol {
-	@apply text-gray-900;
+  @apply text-gray-900;
 }
 
 .content ul:not(:first-child),
 .content ol:not(:first-child) {
-	@apply mt-7;
+  @apply mt-7;
 }
 
 /* Bulleted List
 ------------------------------------　*/
 .content ul li {
-	@apply relative pl-3;
+  @apply relative pl-3;
 }
 
 .content ul li:before {
-	display: inline-block;
-	position: absolute;
-	top: 0.8rem;
-	left: 0;
-	content: '';
-	width: 0.4rem;
-	height: 0.4rem;
-	background: #000;
-	border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  top: 0.8rem;
+  left: 0;
+  content: '';
+  width: 0.4rem;
+  height: 0.4rem;
+  background: #000;
+  border-radius: 50%;
 }
 
 /* Numbered List
 ------------------------------------　*/
 .content ol {
-	counter-reset: count;
+  counter-reset: count;
 }
 
 .content ol li {
-	@apply relative pl-3;
-	counter-increment: count;
+  @apply relative pl-3;
+  counter-increment: count;
 }
 
 .content ol li:before {
-	content: counter(count);
-	display: inline-block;
-	position: absolute;
-	top: 0;
-	left: 0;
+  content: counter(count);
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 /* 区切り線
 ------------------------------------　*/
 .content hr {
-	@apply my-7;
+  @apply my-7;
 }
 
 /* 表
 ------------------------------------　*/
 .content table {
-	@apply border-t border-l;
+  @apply border-t border-l;
 }
 
 .content table:not(:first-child) {
-	@apply mt-7;
+  @apply mt-7;
 }
 
 .content table th {
-	@apply border-b	border-r p-2 text-center text-gray-900;
+  @apply border-b	border-r p-2 text-center text-gray-900;
 }
 
 .content table td {
-	@apply border-b	border-r p-2 text-center text-gray-900;
+  @apply border-b	border-r p-2 text-center text-gray-900;
 }
 
 /* code block
@@ -140,42 +140,42 @@
 */
 
 .content pre {
-	@apply overflow-scroll p-4 border bg-gray-900;
+  @apply overflow-scroll p-4 border bg-gray-900;
 }
 
 .content pre:not(:first-child) {
-	@apply mt-7;
+  @apply mt-7;
 }
 
 .content .code-line {
-	display: block;
-	padding-left: 16px;
-	padding-right: 16px;
-	margin-left: -16px;
-	margin-right: -16px;
-	border-left-width: 4px;
-	border-left-color: rgb(31, 41, 55); /* Set code block color */
+  display: block;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-left: -16px;
+  margin-right: -16px;
+  border-left-width: 4px;
+  border-left-color: rgb(31, 41, 55); /* Set code block color */
 }
 
 .content .highlight-line {
-	margin-left: -16px;
-	margin-right: -16px;
-	background-color: rgba(55, 65, 81, 0.5); /* Set highlight bg color */
-	border-left-width: 4px;
-	border-left-color: rgb(59, 130, 246); /* Set highlight accent border color */
+  margin-left: -16px;
+  margin-right: -16px;
+  background-color: rgba(55, 65, 81, 0.5); /* Set highlight bg color */
+  border-left-width: 4px;
+  border-left-color: rgb(59, 130, 246); /* Set highlight accent border color */
 }
 
 .content .line-number:before {
-	padding-right: 16px;
-	margin-left: -8px;
-	color: rgb(156, 163, 175); /* Line number color */
-	content: attr(line);
+  padding-right: 16px;
+  margin-left: -8px;
+  color: rgb(156, 163, 175); /* Line number color */
+  content: attr(line);
 }
 
 /* iframe
 ------------------------------------　*/
 .content iframe:not(:first-child) {
-	@apply my-7;
+  @apply my-7;
 }
 
 /* hの次の要素
@@ -183,5 +183,5 @@
 .content h1 + *:not(:first-child),
 .content h2 + *:not(:first-child),
 .content h3 + *:not(:first-child) {
-	@apply mt-4;
+  @apply mt-4;
 }
