@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import '../styles/global.css'
 import '../styles/prism-night-owl.css'
 import '../styles/article/content.css'
-import * as gtag from '../lib/gtag'
+import * as gtag from '../src/lib/gtag'
 
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
 	// Google Analytics用の処理

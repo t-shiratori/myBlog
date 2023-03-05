@@ -2,8 +2,8 @@ import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import { createClient, TagCollection, Tag } from 'contentful'
-import { filterTagsForEnv, getHaveArticleTags } from '../lib/filterTags'
-import Layout from '../components/Layout'
+import { filterTagsForEnv, getHaveArticleTags } from '../src/lib/filterTags'
+import Layout from '../src/components/Layout'
 
 const client = createClient({
 	space: process.env.CONTENTFUL_SPACE_ID as string,

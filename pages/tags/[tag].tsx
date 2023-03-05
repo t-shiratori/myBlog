@@ -1,10 +1,10 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
 import Head from 'next/head'
 import { createClient, Entry, TagCollection } from 'contentful'
-import { filterTagsForEnv, getHaveArticleTags } from '../../lib/filterTags'
-import { TField } from '../../types/article'
-import Layout from '../../components/Layout'
-import { Articles } from '../../components/Articles'
+import { filterTagsForEnv, getHaveArticleTags } from '../../src/lib/filterTags'
+import { TField } from '../../src/types/article'
+import Layout from '../../src/components/Layout'
+import { Articles } from '../../src/components/Articles'
 
 const client = createClient({
 	space: process.env.CONTENTFUL_SPACE_ID as string,

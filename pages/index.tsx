@@ -1,9 +1,9 @@
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
-import { TField } from '../types/article'
+import { TField } from '../src/types/article'
 import { createClient, Entry } from 'contentful'
-import Layout from '../components/Layout'
-import { Articles } from '../components/Articles'
+import Layout from '../src/components/Layout'
+import { Articles } from '../src/components/Articles'
 
 type THomeProps = {
 	articles: Entry<TField>[]

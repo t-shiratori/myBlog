@@ -4,12 +4,12 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { createClient, Entry, EntryCollection } from 'contentful'
 import { formatISO9075 } from 'date-fns'
-import { TField } from '../../types/article'
-import mdToPrism from '../../lib/mdToPrism'
-import Layout from '../../components/Layout'
-import ShareButtons from '../../components/ShareButtons'
+import { TField } from '../../src/types/article'
+import mdToPrism from '../../src/lib/mdToPrism'
+import Layout from '../../src/components/Layout'
+import ShareButtons from '../../src/components/ShareButtons'
 import articleStyles from '../../styles/article/index.module.css'
-import { BLOG_URL } from '../../const'
+import { BLOG_URL } from '../../src/const'
 
 const client = createClient({
 	space: process.env.CONTENTFUL_SPACE_ID as string,
